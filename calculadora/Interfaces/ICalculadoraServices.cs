@@ -7,6 +7,6 @@ namespace calculadora.Interfaces
         int Multiplicar(int a, int b);
         int Dividir(int a, int b);
 
-        List<String> ListOperacoes();
+        List<String> HistoricoOperacoes();
     }
 }

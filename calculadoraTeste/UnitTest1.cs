@@ -42,6 +42,12 @@ public class UnitTest1
 
     }
 
+    [Fact]
+    public void divisaoPorZeroTest()
+    {
+        Assert.Throws<DivideByZeroException>(() => _calc.Dividir(6, 0));
+    }
+
     [Theory]
     [InlineData(3, 2, 6)]
     [InlineData(10, 5, 50)]
@@ -52,5 +58,20 @@ public class UnitTest1
         //Arrange
         Assert.Equal(res, resultado);
 
+    }
+
+    [Fact]
+    public void historicoTest()
+    {
+        //Arrange
+        _calc.Somar(3, 2);
+        _calc.Somar(10, 5);
+        _calc.Somar(5, 5);
+        _calc.Somar(6, 2);
+        // Act
+        List<string> historico = _calc.HistoricoOperacoes();
+        //Arrange
+        Assert.NotEmpty(historico);
+        Assert.Equal(3, historico.Count());
     }
 }
